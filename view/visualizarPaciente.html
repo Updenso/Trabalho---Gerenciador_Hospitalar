@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS - Tabela de Pacientes</title>
+    <!-- Inclui o CDN do Tailwind CSS para estilização fácil -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Define a fonte Inter -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Cor de fundo cinza clara */
+        }
+        /* Estilos personalizados para o scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Cabeçalho -->
+    <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-xl font-semibold">HMS</span>
+        </div>
+        <div class="relative group">
+            <button class="flex items-center space-x-2 focus:outline-none rounded-md px-3 py-2 hover:bg-blue-700 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Administrador</span>
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <!-- Dropdown do Administrador (exemplo, pode ser expandido) -->
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block z-10">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1">
+        <!-- Barra Lateral -->
+        <aside class="w-64 bg-white shadow-lg p-4 h-screen overflow-y-auto">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Principal</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zm-6 9A7 7 0 012 11h16a7 7 0 01-5 4v2a1 1 0 11-2 0v-2z"></path>
+                            </svg>
+                            <span>Profissionais</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-md bg-blue-100 text-blue-700">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H2z"></path>
+                            </svg>
+                            <span>Pacientes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M12 7a1 1 0 11-2 0 1 1 0 012 0zm-7 1a1 1 0 100-2 1 1 0 000 2zm7-4a1 1 0 11-2 0 1 1 0 012 0zm-7 4a1 1 0 100-2 1 1 0 000 2zm12 7a1 1 0 11-2 0 1 1 0 012 0zm-7 4a1 1 0 100-2 1 1 0 000 2zM5 10a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 11-2 0 1 1 0 012 0zM7 7a1 1 0 11-2 0 1 1 0 012 0zM12 12a1 1 0 100-2 1 1 0 000 2zm-7 4a1 1 0 11-2 0 1 1 0 012 0zM12 16a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Especialidades</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Agendamentos</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal - Tabela de Pacientes -->
+        <main class="flex-1 p-8 overflow-auto">
+            <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Pacientes</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                    Nome Completo
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Data de Aniversário
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Gênero
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    CPF
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Email
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Telefone
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Endereço
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                    Histórico Médico
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Linha de exemplo vazia para preenchimento -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
+                            </tr>
+                            <!-- Você pode adicionar mais linhas <tr> vazias conforme necessário -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
+                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
