@@ -97,7 +97,6 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
-                    
                 </ul>
             </nav>
         </aside>
@@ -198,13 +197,30 @@
                 <!-- Botão de submissão do formulário -->
                 <div class="mt-6 text-center">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out shadow-md">
-                        Cadastrar
+                        Salvar Paciente
                     </button>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="../script.js"></script>
+    <!-- Script para controlar o sidebar em mobile -->
+    <script>
+        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        });
+
+        document.getElementById('sidebarOverlay').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>

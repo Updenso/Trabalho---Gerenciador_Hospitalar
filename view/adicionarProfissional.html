@@ -50,7 +50,7 @@
                     </svg>
                 </button>
                 <!-- Dropdown de usuário (simulado) -->
-                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
+                <div class="z-40 absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
                     <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Perfil</a>
                     <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Configurações</a>
                     <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sair</a>
@@ -61,7 +61,7 @@
 
     <!-- Conteúdo Principal e Barra Lateral -->
     <div class="flex flex-1">
-        <!-- Barra Lateral (Sidebar) -->
+        <!-- Barra Lateral (Sidebar) - Padrão do Layout -->
         <aside id="sidebar" class="bg-white w-64 p-4 shadow-lg flex-shrink-0 transition-transform duration-300 ease-in-out transform -translate-x-full md:translate-x-0 absolute md:relative z-40 h-full">
             <nav>
                 <ul>
@@ -97,7 +97,6 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
-                    
                 </ul>
             </nav>
         </aside>
@@ -186,6 +185,7 @@
                             </label>
                         </div>
                     </div>
+                    <!-- Especialidade -->
                     <div class="mb-6">
                         <label for="specialty" class="block text-sm font-medium text-gray-700 mb-1">Especialidade <span class="text-red-500">*</span></label>
                         <select id="specialty" name="specialty" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
@@ -222,6 +222,49 @@
             </div>
         </main>
     </div>
-        <script src="../script.js"></script>
+
+    <script>
+        // JavaScript para lidar com a responsividade da barra lateral
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            // Função para abrir a barra lateral em mobile
+            const openSidebar = () => {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            };
+
+            // Função para fechar a barra lateral em mobile
+            const closeSidebar = () => {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            };
+
+            // Adiciona listener para o botão de alternar sidebar em mobile
+            mobileSidebarToggle.addEventListener('click', openSidebar);
+
+            // Adiciona listener para o overlay (clicar fora da sidebar fecha ela)
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            // Adiciona ou remove a classe 'hidden' na barra lateral para telas menores que md
+            const handleResize = () => {
+                if (window.innerWidth >= 768) { // md breakpoint em Tailwind é 768px
+                    sidebar.classList.remove('-translate-x-full'); // Garante que a sidebar esteja visível em desktop
+                    sidebarOverlay.classList.add('hidden'); // Garante que o overlay esteja oculto em desktop
+                } else {
+                    sidebar.classList.add('-translate-x-full'); // Esconde por padrão em mobile
+                    sidebarOverlay.classList.add('hidden'); // Garante que o overlay esteja oculto inicialmente em mobile
+                }
+            };
+            
+            // Listener para redimensionamento da janela
+            window.addEventListener('resize', handleResize);
+
+            // Chama a função handleResize na carga inicial para definir o estado correto da barra lateral
+            handleResize();
+        });
+    </script>
 </body>
 </html>
