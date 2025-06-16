@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS - Tabela de Profissionais</title>
+    <title>HMS - Visualizar Profissionais</title>
     <!-- Inclui o CDN do Tailwind CSS para estilização fácil -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Define a fonte Inter -->
@@ -83,7 +83,7 @@
             <nav>
                 <ul>
                     <li class="mb-2">
-                        <a href="./dashboard.html" class="flex items-center space-x-3 p-3 text-blue-700 font-semibold bg-blue-100 hover:bg-blue-200 rounded-md transition duration-200 ease-in-out">
+                        <a href="./dashboard.html" class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="./adicionarProfissional.html" class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out">
+                        <a href="./adicionarProfissional.html" class="flex items-center space-x-3 p-3 text-blue-700 font-semibold bg-blue-100 hover:bg-blue-200 rounded-md transition duration-200 ease-in-out">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M7 16h.01M16 16h.01M16 12h.01M14 10H8m6 0H8m-2 6h.01M6 21h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
@@ -114,13 +114,14 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
-                    
                 </ul>
             </nav>
         </aside>
 
+        <!-- Overlay para fechar sidebar em mobile -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
+
         <!-- Conteúdo Principal - Tabela de Profissionais -->
-        
         <main class="flex-1 p-8 overflow-auto">
             <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Profissionais</h2>
@@ -138,10 +139,13 @@
                                     Email
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Aniversário
+                                    Data de Nascimento
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Adesão
+                                    ID Funcional
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Data de Admissão
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Telefone
@@ -151,12 +155,9 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Especialidade
-                                </th> <!-- NOVA COLUNA -->
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Endereço
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                    Sobre mim
+                                    Biografia
                                 </th>
                             </tr>
                         </thead>
@@ -170,7 +171,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td> <!-- NOVO TD -->
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
                             </tr>
@@ -183,7 +184,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td> <!-- NOVO TD -->
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
                             </tr>
@@ -193,6 +194,24 @@
             </div>
         </main>
     </div>
-    <script src="../script.js"></script>
+
+    <!-- Script para controlar o sidebar em mobile -->
+    <script>
+        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        });
+
+        document.getElementById('sidebarOverlay').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>
