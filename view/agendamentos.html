@@ -3,38 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS - Tabela de Pacientes</title>
-    <!-- Inclui o CDN do Tailwind CSS para estilização fácil -->
+    <title>Painel Médico</title>
+    <!-- Inclui o CDN do Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Define a fonte Inter -->
-    <style>
+       <style>
+        /* Define a fonte Inter para todo o corpo */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Cor de fundo cinza clara */
-        }
-        /* Estilos personalizados para o scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Evita rolagem horizontal */
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
-    <!-- Cabeçalho -->
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Cabeçalho (Top Bar) -->
     <header class="bg-blue-500 text-white p-4 flex justify-between items-center shadow-md">
         <!-- Logo e Menu Toggle -->
         <div class="flex items-center space-x-4">
@@ -114,94 +97,82 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
+                    
                 </ul>
             </nav>
         </aside>
-
-        <!-- Overlay para fechar sidebar em mobile -->
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
-
-        <!-- Conteúdo Principal - Tabela de Pacientes -->
         <main class="flex-1 p-8 overflow-auto">
-            <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Pacientes</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                    Nome Completo
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Aniversário
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Gênero
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    CPF
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Email
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Telefone
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Endereço
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                    Histórico Médico
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <!-- Linha de exemplo vazia para preenchimento -->
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                            </tr>
-                            <!-- Você pode adicionar mais linhas <tr> vazias conforme necessário -->
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <!-- Título e Botão Visualizar -->
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800">Novo Agendamento</h2>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 ease-in-out">
+                        <a href="./visualizarAgendamentos.html">Visualizar Agendamentos</a>
+                    </button>
                 </div>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Campo: Paciente -->
+                        <div>
+                            <label for="patient" class="block text-sm font-medium text-gray-700 mb-1">Paciente <span class="text-red-500">*</span></label>
+                            <select id="patient" name="patient" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Selecione um paciente</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo: Profissional -->
+                        <div>
+                            <label for="professional" class="block text-sm font-medium text-gray-700 mb-1">Profissional <span class="text-red-500">*</span></label>
+                            <select id="professional" name="professional" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="">Selecione um profissional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Campo: Data do Agendamento -->
+                        <div>
+                            <label for="appointmentDate" class="block text-sm font-medium text-gray-700 mb-1">Data do Agendamento <span class="text-red-500">*</span></label>
+                            <input type="date" id="appointmentDate" name="appointmentDate" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+
+                        <!-- Campo: Hora do Agendamento -->
+                        <div>
+                            <label for="appointmentTime" class="block text-sm font-medium text-gray-700 mb-1">Hora do Agendamento <span class="text-red-500">*</span></label>
+                            <input type="time" id="appointmentTime" name="appointmentTime" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Campo: Tipo de Agendamento -->
+                    <div class="mb-6">
+                        <label for="appointmentType" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Agendamento <span class="text-red-500">*</span></label>
+                        <select id="appointmentType" name="appointmentType" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                            <option value="">Selecione o tipo</option>
+                            <option value="consulta">Consulta</option>
+                            <option value="exame">Exame</option>
+                            <option value="cirurgia">Cirurgia</option>
+                            <option value="retorno">Retorno</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo: Observações -->
+                    <div class="mb-8">
+                        <label for="observations" class="block text-sm font-medium text-gray-700 mb-1">Observações</label>
+                        <textarea id="observations" name="observations" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Adicione quaisquer observações sobre o agendamento..."></textarea>
+                    </div>
+
+                    <!-- Botão de Envio -->
+                    <div class="text-center">
+                        <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                            Agendar
+                        </button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>
-
-    <!-- Script para controlar o sidebar em mobile -->
-    <script>
-        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        });
-
-        document.getElementById('sidebarOverlay').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

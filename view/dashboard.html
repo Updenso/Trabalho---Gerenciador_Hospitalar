@@ -3,38 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS - Tabela de Pacientes</title>
-    <!-- Inclui o CDN do Tailwind CSS para estilização fácil -->
+    <title>Painel Médico</title>
+    <!-- Inclui o CDN do Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Define a fonte Inter -->
-    <style>
+       <style>
+        /* Define a fonte Inter para todo o corpo */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Cor de fundo cinza clara */
-        }
-        /* Estilos personalizados para o scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Evita rolagem horizontal */
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
-    <!-- Cabeçalho -->
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Cabeçalho (Top Bar) -->
     <header class="bg-blue-500 text-white p-4 flex justify-between items-center shadow-md">
         <!-- Logo e Menu Toggle -->
         <div class="flex items-center space-x-4">
@@ -114,6 +97,7 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
+                    
                 </ul>
             </nav>
         </aside>
@@ -121,87 +105,63 @@
         <!-- Overlay para fechar sidebar em mobile -->
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
 
-        <!-- Conteúdo Principal - Tabela de Pacientes -->
-        <main class="flex-1 p-8 overflow-auto">
-            <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Pacientes</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                    Nome Completo
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Aniversário
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Gênero
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    CPF
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Email
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Telefone
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Endereço
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                    Histórico Médico
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <!-- Linha de exemplo vazia para preenchimento -->
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                            </tr>
-                            <!-- Você pode adicionar mais linhas <tr> vazias conforme necessário -->
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 p-6 bg-gray-100 overflow-y-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Principal</h2>
+
+            <!-- Cards de Estatísticas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
+                <!-- Card Doctors -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
+                    <div class="bg-blue-100 text-blue-500 rounded-full p-4 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">0</p>
+                    <div class="flex items-center space-x-2 bg-blue-500 text-white text-sm px-3 py-1 rounded-full mt-2">
+                        <span>Profissionais</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Card Patients -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
+                    <div class="bg-green-100 text-green-500 rounded-full p-4 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">0</p>
+                    <div class="flex items-center space-x-2 bg-green-500 text-white text-sm px-3 py-1 rounded-full mt-2">
+                        <span>Pacientes</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Card Attend -->
+                <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
+                    <div class="bg-gray-200 text-gray-600 rounded-full p-4 mb-3">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">0</p>
+                    <div class="flex items-center space-x-2 bg-gray-500 text-white text-sm px-3 py-1 rounded-full mt-2">
+                        <span>Agendamentos</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Script para controlar o sidebar em mobile -->
-    <script>
-        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        });
-
-        document.getElementById('sidebarOverlay').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>

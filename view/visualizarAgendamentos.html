@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS - Tabela de Pacientes</title>
+    <title>HMS - Visualizar Agendamentos</title>
     <!-- Inclui o CDN do Tailwind CSS para estilização fácil -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Define a fonte Inter -->
@@ -114,6 +114,7 @@
                             <span>Agendamentos</span>
                         </a>
                     </li>
+                    
                 </ul>
             </nav>
         </aside>
@@ -121,44 +122,41 @@
         <!-- Overlay para fechar sidebar em mobile -->
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
 
-        <!-- Conteúdo Principal - Tabela de Pacientes -->
+        <!-- Conteúdo Principal - Tabela de Agendamentos -->
         <main class="flex-1 p-8 overflow-auto">
             <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Pacientes</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Agendamentos Existentes</h2>
+                
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                    Nome Completo
+                                    Paciente
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Aniversário
+                                    Profissional
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Gênero
+                                    Data
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    CPF
+                                    Hora
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Email
+                                    Tipo
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Telefone
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Endereço
+                                    Status
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                    Histórico Médico
+                                    Observações
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             <!-- Linha de exemplo vazia para preenchimento -->
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
@@ -175,7 +173,6 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
                             </tr>
                         </tbody>
@@ -184,24 +181,6 @@
             </div>
         </main>
     </div>
-
-    <!-- Script para controlar o sidebar em mobile -->
-    <script>
-        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        });
-
-        document.getElementById('sidebarOverlay').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>
