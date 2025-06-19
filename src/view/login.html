@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HMS</title>
+    <!-- Inclui o CDN do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter para todo o corpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Garante que não haja rolagem desnecessária */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Altura mínima de 100% da viewport */
+            background-color: #f3f4f6; /* Cor de fundo suave */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Container principal da tela de login -->
+    <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center">
+        <!-- Ícone do HMS -->
+        <div class="mb-6 flex justify-center">
+            <svg class="w-20 h-20 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z"></path>
+            </svg>
+        </div>
+
+        <!-- Formulário de login -->
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label for="username" class="block text-left text-sm font-medium text-gray-700 mb-1">Username</label>
+                <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="password" class="block text-left text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition duration-200 ease-in-out shadow-md">
+                LOGIN
+            </button>
+        </form>
+
+        <!-- Área para mensagens de erro/sucesso -->
+        <div id="messageArea" class="mt-4 text-sm font-medium text-center hidden"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const messageArea = document.getElementById('messageArea');
+
+            // Adiciona um listener para o evento de submit do formulário
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Previne o comportamento padrão de submit do formulário
+
+                const username = usernameInput.value;
+                const password = passwordInput.value;
+
+                // Simulação de validação de login
+                if (username === 'admin' && password === 'admin123') { // Você pode mudar a senha para o que preferir
+                    messageArea.textContent = 'Login bem-sucedido! Redirecionando...';
+                    messageArea.classList.remove('hidden', 'text-red-500');
+                    messageArea.classList.add('text-green-500', 'block');
+                    // Simula um redirecionamento após 1 segundo
+                    setTimeout(() => {
+                        window.location.href = './dashboard.html'; // Redirecione para a página do dashboard
+                    }, 1000);
+                } else {
+                    messageArea.textContent = 'Nome de usuário ou senha inválidos.';
+                    messageArea.classList.remove('hidden', 'text-green-500');
+                    messageArea.classList.add('text-red-500', 'block');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
