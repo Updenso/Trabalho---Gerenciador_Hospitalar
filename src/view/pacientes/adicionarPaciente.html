@@ -124,7 +124,7 @@
                             <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
                             <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamentos</a>
                             <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
-                        </div>>
+                        </div>
                     </li>
                 </ul>
             </nav>
@@ -234,22 +234,6 @@
     </div>
 
     <!-- Script para controlar o sidebar em mobile -->
-    <script>
-        document.getElementById('mobileSidebarToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        });
-
-        document.getElementById('sidebarOverlay').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
+    <script  src="../script.js"></script>
 </body>
 </html>
