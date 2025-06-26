@@ -11,9 +11,14 @@ class PacienteController {
                         return res.status(500).json({ message: `${error.message} - falha na requisição de paciente` });
                     }
                     if (paciente) {
+                        const pacienteCamelCase = {};
+                        for (const key in paciente) {
+                            const camelCaseKey = key.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+                            pacienteCamelCase[camelCaseKey] = paciente[key];
+                        }
                         res.status(200).json({
                             message: "Paciente encontrado!",
-                            paciente: paciente
+                            paciente: pacienteCamelCase
                         });
                     } else {
                         res.status(404).json({ message: "Paciente não encontrado." });
@@ -24,9 +29,17 @@ class PacienteController {
                     if (error) {
                         return res.status(500).json({ message: `${error.message} - falha na requisição de pacientes` });
                     }
+                    const pacientesCamelCase = pacientes.map(paciente => {
+                        const pacienteObj = {};
+                        for (const key in paciente) {
+                            const camelCaseKey = key.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+                            pacienteObj[camelCaseKey] = paciente[key];
+                        }
+                        return pacienteObj;
+                    });
                     res.status(200).json({
                         message: "Lista de pacientes.",
-                        pacientes: pacientes
+                        pacientes: pacientesCamelCase
                     });
                 });
             }
@@ -37,7 +50,12 @@ class PacienteController {
 
     static async adicionarPaciente(req, res) {
         try {
+            console.log('Dados recebidos no req.body:', req.body);
             const novoPacienteDados = req.body; 
+
+            // Concatena os campos de endereço em uma única string
+            const enderecoCompleto = `${novoPacienteDados.endereco.rua}, ${novoPacienteDados.endereco.numero}, ${novoPacienteDados.endereco.bairro}, ${novoPacienteDados.endereco.cidade}, ${novoPacienteDados.endereco.estado}`;
+
             const novoPaciente = new Paciente(
                 novoPacienteDados.nomeCompleto,
                 novoPacienteDados.dataNascimento,
@@ -45,7 +63,7 @@ class PacienteController {
                 novoPacienteDados.cpf,
                 novoPacienteDados.email,
                 novoPacienteDados.telefone,
-                novoPacienteDados.endereco,
+                enderecoCompleto, // Passa a string concatenada
                 novoPacienteDados.historicoMedico
             );
 
@@ -67,6 +85,11 @@ class PacienteController {
         try {
             const id = req.params.id; 
             const dadosAtualizados = req.body; 
+
+            // Se o endereço for um objeto, concatene os campos em uma string
+            if (dadosAtualizados.endereco && typeof dadosAtualizados.endereco === 'object') {
+                dadosAtualizados.endereco = `${dadosAtualizados.endereco.rua}, ${dadosAtualizados.endereco.numero}, ${dadosAtualizados.endereco.bairro}, ${dadosAtualizados.endereco.cidade}, ${dadosAtualizados.endereco.estado}`;
+            }
 
             Paciente.editar(id, dadosAtualizados, (error, sucesso) => {
                 if (error) {

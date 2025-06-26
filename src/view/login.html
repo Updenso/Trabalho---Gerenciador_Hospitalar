@@ -80,6 +80,11 @@
                 }
             });
         });
+        const isLoggedIn = sessionStorage.getItem('usuarioLogado');
+
+        if (!isLoggedIn && window.location.pathname !== '/login.html') {
+            window.location.href = './login.html';
+        }
     </script>
 </body>
 </html>

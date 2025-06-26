@@ -55,18 +55,18 @@
 
    <div class="flex items-center space-x-4">
     <!-- Ícone de Usuário/Admin -->
-    <div class="relative group">
-        <button class="flex items-center space-x-2 p-2 rounded-full hover:bg-blue-600 transition duration-200 ease-in-out focus:outline-none text-white">
+    <div class="relative dropdown-container">
+        <button class="flex items-center space-x-2 p-2 rounded-full hover:bg-blue-600 transition duration-200 ease-in-out focus:outline-none text-white dropdown-toggle">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
             </svg>
             <span class="hidden md:block">Administrador</span>
-            <svg class="w-4 h-4 hidden md:block transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-4 h-4 hidden md:block transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
         </button>
         <!-- Dropdown de usuário (simulado) -->
-        <div class="absolute right-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 hidden group-hover:block z-50">
+        <div class="absolute right-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 dropdown-menu hidden z-50">
             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Perfil</a>
             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Configurações</a>
             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sair</a>
@@ -90,57 +90,57 @@
                         </a>
                     </li>
                     <!-- Dropdown para Profissionais -->
-                    <li class="mb-2 relative group">
-                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left">
+                    <li class="mb-2 relative dropdown-container">
+                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left dropdown-toggle">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M7 16h.01M16 16h.01M16 12h.01M14 10H8m6 0H8m-2 6h.01M6 21h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             <span>Profissionais</span>
                             <!-- Ícone de seta para o dropdown -->
-                            <svg class="w-4 h-4 ml-auto transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-4 h-4 ml-auto transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="hidden group-hover:block absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                        <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../profissionais/adicionarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Profissional</a>
                             <a href="../profissionais/visualizarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">visualizar Profissionais</a>
                             <a href="../profissionais/editarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Profissionais</a>
                         </div>
                     </li>
                     <!-- Dropdown para Pacientes -->
-                    <li class="mb-2 relative group">
-                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left">
+                    <li class="mb-2 relative dropdown-container">
+                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left dropdown-toggle">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z"></path>
                             </svg>
                             <span>Pacientes</span>
                             <!-- Ícone de seta para o dropdown -->
-                            <svg class="w-4 h-4 ml-auto transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-4 h-4 ml-auto transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="hidden group-hover:block absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                        <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../pacientes/adicionarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Paciente</a>
                             <a href="../pacientes/visualizarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Listar Pacientes</a>
                             <a href="../pacientes/EditarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Pacientes</a>
                         </div>
                     </li>
                     <!-- Dropdown para Agendamentos -->
-                    <li class="mb-2 relative group">
-                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left">
+                    <li class="mb-2 relative dropdown-container">
+                        <button class="flex items-center space-x-3 p-3 text-gray-700 hover:bg-gray-100 hover:text-blue-700 rounded-md transition duration-200 ease-in-out w-full text-left dropdown-toggle">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M7 16h.01M16 16h.01M16 12h.01M14 10H8m6 0H8m-2 6h.01M6 21h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             <span>Agendamentos</span>
                             <!-- Ícone de seta para o dropdown -->
-                            <svg class="w-4 h-4 ml-auto transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-4 h-4 ml-auto transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="hidden group-hover:block absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
-                            <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
-                            <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamentos</a>
-                            <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
+                        <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                            <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
+                            <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamento</a>
+                            <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
                         </div>
                     </li>
                 </ul>
@@ -206,6 +206,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                                 <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-md">Editar</button>
                                     <button class="bg-red-500 hover:bg-red-700 text-white p-3 rounded-md">Excluir</button>
                                 </td>
                             </tr>
@@ -218,5 +219,6 @@
         </main>
     </div>
     <script src="../script.js"></script>
+    <script type="module" src="../../dropdown.js"></script>
 </body>
 </html>
