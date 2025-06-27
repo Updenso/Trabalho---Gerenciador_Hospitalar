@@ -103,8 +103,7 @@
                         </button>
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../profissionais/adicionarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Profissional</a>
-                            <a href="../profissionais/visualizarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">visualizar Profissionais</a>
-                            <a href="../profissionais/editarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Profissionais</a>
+                            <a href="../profissionais/visualizarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Profissionais</a>
                         </div>
                     </li>
                     <!-- Dropdown para Pacientes -->
@@ -122,7 +121,6 @@
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../pacientes/adicionarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Paciente</a>
                             <a href="../pacientes/visualizarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Listar Pacientes</a>
-                            <a href="../pacientes/EditarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Pacientes</a>
                         </div>
                     </li>
                     <!-- Dropdown para Agendamentos -->
@@ -139,7 +137,6 @@
                         </button>
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
-                            <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamento</a>
                             <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
                         </div>
                     </li>
@@ -157,68 +154,77 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg border-l border-r border-gray-200">
+                                    ID
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Nome Completo
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Usuário
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Email
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
+                                    Senha
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Data de Aniversário
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Data de Adesão
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
+                                    Data de Admissão
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Telefone
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Gênero
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Especialidade
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Endereço
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                    Sobre mim
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
+                                    Biografia
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg border-r border-gray-200">
                                     Ações
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody id="professionalsTableBody" class="bg-white divide-y divide-gray-200">
                             <!-- Linha de exemplo vazia para preenchimento -->
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td> <!-- NOVO TD -->
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-l border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis border-r border-gray-200"></td>
+                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden border-r border-gray-200">
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-md">Editar</button>
                                     <button class="bg-red-500 hover:bg-red-700 text-white p-3 rounded-md">Excluir</button>
                                 </td>
                             </tr>
-                            
-                          
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
     </div>
-    <script src="../script.js"></script>
-    <script type="module" src="../../dropdown.js"></script>
+
+    <!-- Script para controlar o sidebar em mobile -->
+    <script  src="../script.js"></script>
+    <script type="module" src="./deletar.js"></script>
+    <script type="module" src="./listar.js"></script>
+    <script type="module" src="../dropdown.js"></script>
 </body>
 </html>

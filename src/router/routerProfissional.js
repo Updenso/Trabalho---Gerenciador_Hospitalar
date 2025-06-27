@@ -4,9 +4,10 @@ import ProfissionalController from "../controller/profissionalController.js";
 
 const routes = express.Router();
 
-routes.get('/visualizarProfissional/:id?', ProfissionalController.visualizarProfissionais);
-routes.post('/adicionarProfissional', ProfissionalController.adicionarProfissional);
-routes.put('/EditarProfissional/:id', ProfissionalController.editarProfissional);
-routes.delete('/profissional/:id', ProfissionalController.deletarProfissional);
+routes.get('/profissionais', ProfissionalController.visualizarProfissionais);
+routes.get('/profissionais/:id', ProfissionalController.visualizarProfissionais);
+routes.post('/profissionais', ProfissionalController.adicionarProfissional);
+routes.put('/profissionais/:id', ProfissionalController.editarProfissional);
+routes.delete('/profissionais/:id', ProfissionalController.deletarProfissional);
 
 export default routes;

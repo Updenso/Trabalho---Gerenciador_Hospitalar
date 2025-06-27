@@ -87,7 +87,6 @@
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../profissionais/adicionarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Profissional</a>
                             <a href="../profissionais/visualizarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">visualizar Profissionais</a>
-                            <a href="../profissionais/editarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Profissionais</a>
                         </div>
                     </li>
                     <!-- Dropdown para Pacientes -->
@@ -105,7 +104,6 @@
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../pacientes/adicionarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Paciente</a>
                             <a href="../pacientes/visualizarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Listar Pacientes</a>
-                            <a href="../pacientes/EditarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Pacientes</a>
                         </div>
                     </li>
                     <!-- Dropdown para Agendamentos -->
@@ -122,9 +120,7 @@
                         </button>
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
-                            <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamento</a>
                             <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
-                            
                         </div>
                     </li>
                 </ul>
@@ -133,52 +129,55 @@
 
         <!-- Overlay para fechar sidebar em mobile -->
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
-        <main class="flex-1 p-8 overflow-auto">
-            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <!-- Título e Botão Visualizar -->
-                <div class="flex justify-between items-center mb-8">
+
+        <!-- Conteúdo Principal - Formulário Adicionar Paciente -->
+        <main class="flex-1 p-6 bg-gray-100 overflow-y-auto">
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto relative">
+                <!-- Título e Botão Voltar -->
+                <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Novo Agendamento</h2>
                     <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 ease-in-out">
                         <a href="./visualizarAgendamentos.html">Visualizar Agendamentos</a>
                     </button>
                 </div>
-                <form>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <!-- Campo: Paciente -->
-                        <div>
-                            <label for="patient" class="block text-sm font-medium text-gray-700 mb-1">Paciente <span class="text-red-500">*</span></label>
-                            <select id="patient" name="patient" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <option value="">Selecione um paciente</option>
-                            </select>
-                        </div>
 
-                        <!-- Campo: Profissional -->
-                        <div>
-                            <label for="professional" class="block text-sm font-medium text-gray-700 mb-1">Profissional <span class="text-red-500">*</span></label>
-                            <select id="professional" name="professional" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <option value="">Selecione um profissional</option>
-                            </select>
-                        </div>
+                <!-- Área para mensagens de sucesso/erro -->
+                <div id="statusMessage" class="mt-4 p-3 rounded-md text-sm font-medium text-center hidden"></div>
+
+                <form id="FormAgendamento" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <!-- Paciente ID -->
+                    <div>
+                        <label for="pacienteId" class="block text-sm font-medium text-gray-700 mb-1">ID do Paciente <span class="text-red-500">*</span></label>
+                        <input type="number" id="pacienteId" name="pacienteId" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <!-- Campo: Data do Agendamento -->
-                        <div>
-                            <label for="appointmentDate" class="block text-sm font-medium text-gray-700 mb-1">Data do Agendamento <span class="text-red-500">*</span></label>
-                            <input type="date" id="appointmentDate" name="appointmentDate" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        </div>
-
-                        <!-- Campo: Hora do Agendamento -->
-                        <div>
-                            <label for="appointmentTime" class="block text-sm font-medium text-gray-700 mb-1">Hora do Agendamento <span class="text-red-500">*</span></label>
-                            <input type="time" id="appointmentTime" name="appointmentTime" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <!-- Profissional ID -->
+                    <div>
+                        <label for="profissionalId" class="block text-sm font-medium text-gray-700 mb-1">ID do Profissional <span class="text-red-500">*</span></label>
+                        <input type="number" id="profissionalId" name="profissionalId" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                    </div>
+                 
+                    <!-- Data do Agendamento -->
+                    <div>
+                        <label for="dataAgendamento" class="block text-sm font-medium text-gray-700 mb-1">Data do Agendamento <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <input type="date" id="dataAgendamento" name="dataAgendamento" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M7 16h.01M16 16h.01M16 12h.01M14 10H8m6 0H8m-2 6h.01M6 21h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Campo: Tipo de Agendamento -->
+                    <!-- Hora do Agendamento -->
+                    <div>
+                        <label for="horaAgendamento" class="block text-sm font-medium text-gray-700 mb-1">Hora do Agendamento <span class="text-red-500">*</span></label>
+                        <input type="time" id="horaAgendamento" name="horaAgendamento" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                    </div>
+                    <!-- Tipo de Agendamento -->
                     <div class="mb-6">
-                        <label for="appointmentType" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Agendamento <span class="text-red-500">*</span></label>
-                        <select id="appointmentType" name="appointmentType" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        <label for="tipoAgendamento" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Agendamento <span class="text-red-500">*</span></label>
+                        <select id="tipoAgendamento" name="tipoAgendamento" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             <option value="">Selecione o tipo</option>
                             <option value="consulta">Consulta</option>
                             <option value="exame">Exame</option>
@@ -187,16 +186,15 @@
                             <option value="outro">Outro</option>
                         </select>
                     </div>
-
-                    <!-- Campo: Observações -->
+                    <!-- Observações -->
                     <div class="mb-8">
-                        <label for="observations" class="block text-sm font-medium text-gray-700 mb-1">Observações</label>
-                        <textarea id="observations" name="observations" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Adicione quaisquer observações sobre o agendamento..."></textarea>
+                        <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-1">Observações</label>
+                        <textarea id="observacoes" name="observacoes" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Adicione quaisquer observações sobre o agendamento..."></textarea>
                     </div>
 
                     <!-- Botão de Envio -->
                     <div class="text-center">
-                        <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                        <button type="submit" id="saveAgendamentoBtn" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
                             Agendar
                         </button>
                     </div>
@@ -206,5 +204,6 @@
     </div>
     <script src="../script.js"></script>
     <script type="module" src="../dropdown.js"></script>
+    <script type="module" src="cadastrar.js"></script>
 </body>
 </html>

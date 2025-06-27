@@ -104,7 +104,6 @@
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../profissionais/adicionarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Profissional</a>
                             <a href="../profissionais/visualizarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">visualizar Profissionais</a>
-                            <a href="../profissionais/editarProfissional.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Profissionais</a>
                         </div>
                     </li>
                     <!-- Dropdown para Pacientes -->
@@ -122,7 +121,6 @@
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../pacientes/adicionarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Adicionar Paciente</a>
                             <a href="../pacientes/visualizarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Listar Pacientes</a>
-                            <a href="../pacientes/EditarPaciente.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Pacientes</a>
                         </div>
                     </li>
                     <!-- Dropdown para Agendamentos -->
@@ -139,7 +137,6 @@
                         </button>
                         <div class="hidden dropdown-menu absolute left-0 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
                             <a href="../agendamentos/agendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Novo Agendamento</a>
-                            <a href="../agendamentos/editarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Editar Agendamento</a>
                             <a href="../agendamentos/visualizarAgendamentos.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-700">Visualizar Agendamentos</a>
                         </div>
                     </li>
@@ -153,52 +150,49 @@
         <!-- Conteúdo Principal - Tabela de Agendamentos -->
         <main class="flex-1 p-8 overflow-auto">
             <div class="max-w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Agendamentos Existentes</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dados dos Agendamentos</h2>
                 
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg border-l border-r border-gray-200">
+                                    ID
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Paciente
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Profissional
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Data
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Hora
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Tipo
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Status
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-r border-gray-200">
                                     Observações
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg border-r border-gray-200">
                                     Ações
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tbody id="appointmentsTableBody" class="bg-white divide-y divide-gray-200">
                             <!-- Linha de exemplo vazia para preenchimento -->
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
-                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis"></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-md">Editar</button>
-                                    <button class="bg-red-500 hover:bg-red-700 text-white p-3 rounded-md">Excluir</button>
-                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-l border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
+                                <td class="px-6 py-4 text-sm text-gray-700 max-w-xs overflow-hidden text-ellipsis border-r border-gray-200"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r border-gray-200"></td>
                             </tr>
                             <!-- Você pode adicionar mais linhas <tr> vazias conforme necessário -->
                         </tbody>
@@ -209,5 +203,6 @@
     </div>
     <script src="../script.js"></script>
     <script type="module" src="../dropdown.js"></script>
+    <script type="module" src="listar.js"></script>
 </body>
 </html>
