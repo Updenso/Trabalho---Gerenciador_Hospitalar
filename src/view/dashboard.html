@@ -10,6 +10,8 @@
     <title>Painel Médico</title>
     <!-- Inclui o CDN do Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclui o Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
        <style>
         /* Define a fonte Inter para todo o corpo */
         body {
@@ -153,7 +155,7 @@
             <h2 id="mainTitle" class="text-3xl font-bold text-gray-800 mb-6">Principal</h2>
 
             <!-- Cards de Estatísticas -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 p-6 mb-8">
                 <!-- Card Doctors -->
                 <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
                     <div class="bg-blue-100 text-blue-500 rounded-full p-4 mb-3">
@@ -202,6 +204,13 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Seção do Gráfico de Agendamentos -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Agendamentos por Mês</h3>
+                <canvas id="appointmentsChart"></canvas>
+            </div>
+
         </main>
     </div>
 

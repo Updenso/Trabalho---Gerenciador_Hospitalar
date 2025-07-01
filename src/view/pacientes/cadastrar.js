@@ -17,13 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cpf: formData.get('cpf'),
                 email: formData.get('email'),
                 telefone: formData.get('phone'),
-                endereco: {
-                    rua: formData.get('Rua'),
-                    numero: formData.get('Numero'),
-                    bairro: formData.get('Bairro'),
-                    cidade: formData.get('Cidade'),
-                    estado: formData.get('Estado')
-                },
+                endereco: formData.get('address'),
                 historicoMedico: formData.get('medicalHistory')
             };
 

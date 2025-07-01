@@ -50,20 +50,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Preencher o campo ID (já está sendo preenchido no bloco if/else acima, mas manter aqui para consistência)
                 document.getElementById('pacienteId').value = patient.pacienteId;
                 document.getElementById('name').value = patient.nomeCompleto;
-                document.getElementById('dob').value = patient.dataNascimento;
+                // Formatar a data de nascimento para o formato YYYY-MM-DD
+                document.getElementById('dob').value = patient.dataNascimento ? patient.dataNascimento.split('T')[0] : '';
                 // Selecionar o gênero
                 document.querySelectorAll(`input[name="gender"][value="${patient.genero}"]`).forEach(radio => radio.checked = true);
                 document.getElementById('cpf').value = patient.cpf;
                 document.getElementById('email').value = patient.email;
                 document.getElementById('phone').value = patient.telefone;
 
-                // Preencher campos de endereço (se o endereco for uma string, você precisará parseá-lo)
-                const enderecoParts = patient.endereco ? patient.endereco.split(', ') : [];
-                document.getElementById('Rua').value = enderecoParts[0] || '';
-                document.getElementById('Numero').value = enderecoParts[1] || '';
-                document.getElementById('Bairro').value = enderecoParts[2] || '';
-                document.getElementById('Cidade').value = enderecoParts[3] || '';
-                document.getElementById('Estado').value = enderecoParts[4] || '';
+                // Preencher o campo de endereço (textarea)
+                document.getElementById('address').value = patient.endereco || '';
 
                 document.getElementById('medicalHistory').value = patient.historicoMedico;
 
@@ -112,13 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 cpf: formData.get('cpf'),
                 email: formData.get('email'),
                 telefone: formData.get('phone'),
-                endereco: {
-                    rua: formData.get('Rua'),
-                    numero: formData.get('Numero'),
-                    bairro: formData.get('Bairro'),
-                    cidade: formData.get('Cidade'),
-                    estado: formData.get('Estado')
-                },
+                endereco: formData.get('address'),
                 historicoMedico: formData.get('medicalHistory')
             };
 

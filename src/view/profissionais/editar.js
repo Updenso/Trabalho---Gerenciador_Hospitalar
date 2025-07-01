@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se houver um ID na URL, preencher o campo e carregar os dados
     if (profissionalIdFromUrl) {
         profissionalIdInput.value = profissionalIdFromUrl;
-        fetchAndPopulateProfissional(profissionalIdFromUrl);
+        await fetchAndPopulateProfissional(profissionalIdFromUrl);
     } else {
         // Caso não haja ID na URL, limpar o campo e a mensagem de status para que o usuário possa digitar
         profissionalIdInput.value = '';
@@ -109,13 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 telefone: formData.get('phone'),
                 genero: formData.get('gender'),
                 especialidade: formData.get('specialty'),
-                endereco: {
-                    rua: formData.get('Rua'),
-                    numero: formData.get('Numero'),
-                    bairro: formData.get('Bairro'),
-                    cidade: formData.get('Cidade'),
-                    estado: formData.get('Estado')
-                },
+                endereco: formData.get('address'),
                 biografia: formData.get('biography')
             };
 

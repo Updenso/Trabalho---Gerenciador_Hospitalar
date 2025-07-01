@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se houver um ID na URL, preencher o campo e carregar os dados
     if (agendamentoIdFromUrl) {
         agendamentoIdInput.value = agendamentoIdFromUrl;
-        fetchAndPopulateAgendamento(agendamentoIdFromUrl);
+        await fetchAndPopulateAgendamento(agendamentoIdFromUrl);
     } else {
         // Caso não haja ID na URL, limpar o campo e a mensagem de status para que o usuário possa digitar
         agendamentoIdInput.value = '';
@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('agendamentoId').value = agendamento.agendamentoId;
                 document.getElementById('pacienteId').value = agendamento.pacienteId;
                 document.getElementById('profissionalId').value = agendamento.profissionalId;
-                document.getElementById('dataAgendamento').value = agendamento.dataAgendamento;
+                // Formatar a data de agendamento para o formato YYYY-MM-DD
+                document.getElementById('dataAgendamento').value = agendamento.dataAgendamento ? agendamento.dataAgendamento.split('T')[0] : '';
                 document.getElementById('horaAgendamento').value = agendamento.horaAgendamento;
                 document.getElementById('tipoAgendamento').value = agendamento.tipoAgendamento;
                 document.getElementById('observacoes').value = agendamento.observacoes;

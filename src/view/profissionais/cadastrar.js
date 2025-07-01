@@ -14,17 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 nomeCompleto: formData.get('name'),
                 email: formData.get('email'),
                 dataNascimento: formData.get('dob'),
-                dataAdmissao: formData.get('admissionDate'),
+                dataAdmissao: formData.get('joiningDate'),
                 telefone: formData.get('phone'),
                 genero: formData.get('gender'),
                 especialidade: formData.get('specialty'),
-                endereco: {
-                    rua: formData.get('Rua'),
-                    numero: formData.get('Numero'),
-                    bairro: formData.get('Bairro'),
-                    cidade: formData.get('Cidade'),
-                    estado: formData.get('Estado')
-                },
+                endereco: formData.get('address'),
                 biografia: formData.get('biography')
             };
 

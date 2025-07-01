@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (result.profissionais && result.profissionais.length > 0) {
-                professionalsTableBody.innerHTML = ''; // Limpa qualquer linha de exemplo
+                professionalsTableBody.innerHTML = ''; 
                 result.profissionais.forEach(professional => {
                     const row = professionalsTableBody.insertRow();
 
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.textContent = professional.email;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 
-                    // Formata a data de nascimento
+                    cell = row.insertCell();
                     cell.textContent = professional.dataNascimento;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 
-                    // Formata a data de admissão
+                    cell = row.insertCell();
                     cell.textContent = professional.dataAdmissao;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 
