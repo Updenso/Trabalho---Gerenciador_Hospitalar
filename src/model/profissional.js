@@ -1,11 +1,9 @@
 import connection from "../config/DBconfig.js";
 
 class Profissional {
-    constructor(nomeCompleto, nomeUsuario, email, senha, dataNascimento, dataAdmissao, telefone, genero, especialidade, endereco, biografia) {
+    constructor(nomeCompleto, email, dataNascimento, dataAdmissao, telefone, genero, especialidade, endereco, biografia) {
         this.nomeCompleto = nomeCompleto;
-        this.nomeUsuario = nomeUsuario;
         this.email = email;
-        this.senha = senha; // Lembre-se de sempre hashear senhas antes de salvar em um ambiente de produção!
         this.dataNascimento = dataNascimento;
         this.dataAdmissao = dataAdmissao;
         this.telefone = telefone;
@@ -53,12 +51,10 @@ class Profissional {
             enderecoString = `${profissional.endereco.rua}, ${profissional.endereco.numero}, ${profissional.endereco.bairro}, ${profissional.endereco.cidade}, ${profissional.endereco.estado}`;
         }
 
-        const sql = 'INSERT INTO profissional (nome_completo, nome_usuario, email, senha, data_nascimento, data_admissao, telefone, genero, especialidade, endereco, biografia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO profissional (nome_completo, email, data_nascimento, data_admissao, telefone, genero, especialidade, endereco, biografia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
         connection.query(sql, [
             profissional.nomeCompleto,
-            profissional.nomeUsuario,
             profissional.email,
-            profissional.senha,
             profissional.dataNascimento,
             profissional.dataAdmissao,
             profissional.telefone,
@@ -86,9 +82,7 @@ class Profissional {
             const formattedProfessionals = results.map(prof => ({
                 profissionalId: prof.profissional_id,
                 nomeCompleto: prof.nome_completo,
-                nomeUsuario: prof.nome_usuario,
                 email: prof.email,
-                senha: prof.senha,
                 dataNascimento: Profissional._formatDateToYYYYMMDD(prof.data_nascimento),
                 dataAdmissao: Profissional._formatDateToYYYYMMDD(prof.data_admissao),
                 telefone: prof.telefone,
@@ -113,9 +107,7 @@ class Profissional {
                 const formattedProf = {
                     profissionalId: prof.profissional_id,
                     nomeCompleto: prof.nome_completo,
-                    nomeUsuario: prof.nome_usuario,
                     email: prof.email,
-                    senha: prof.senha,
                     dataNascimento: Profissional._formatDateToYYYYMMDD(prof.data_nascimento),
                     dataAdmissao: Profissional._formatDateToYYYYMMDD(prof.data_admissao),
                     telefone: prof.telefone,
@@ -141,7 +133,6 @@ class Profissional {
 
             // Lidar com o mapeamento de camelCase para snake_case para colunas do banco de dados
             if (key === 'nomeCompleto') dbColumnName = 'nome_completo';
-            else if (key === 'nomeUsuario') dbColumnName = 'nome_usuario';
             else if (key === 'dataNascimento') dbColumnName = 'data_nascimento';
             else if (key === 'dataAdmissao') dbColumnName = 'data_admissao';
             else if (key === 'profissionalId') continue; // Ignorar ID

@@ -43,9 +43,7 @@ class ProfissionalController {
             const novoProfissionalDados = req.body;
             const novoProfissional = new Profissional(
                 novoProfissionalDados.nomeCompleto,
-                novoProfissionalDados.nomeUsuario,
                 novoProfissionalDados.email,
-                novoProfissionalDados.senha, // Lembre-se de hashear a senha antes de salvar em produção!
                 novoProfissionalDados.dataNascimento,
                 novoProfissionalDados.dataAdmissao,
                 novoProfissionalDados.telefone,

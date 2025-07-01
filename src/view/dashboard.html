@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
     <link rel="icon" href="logo.svg" type="image/svg+xml">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Médico</title>
@@ -16,48 +19,13 @@
             overflow-x: hidden; /* Evita rolagem horizontal */
         }
 
-        /* Variáveis CSS para temas */
-        :root {
-            --color-primary: #3B82F6; /* blue-500 */
-            --color-primary-dark: #2563EB; /* blue-600 */
-            --color-secondary: #6B7280; /* gray-500 */
-            --color-secondary-light: #F3F4F6; /* gray-100 */
-            --color-text-dark: #1F2937; /* gray-800 */
-            --color-text-light: #FFFFFF; /* white */
-            --color-bg-light: #F3F4F6; /* gray-100 */
-            --color-bg-card: #FFFFFF;
-        }
-
-        .dark-theme {
-            --color-primary: #1F2937; /* gray-800 */
-            --color-primary-dark: #374151; /* gray-700 */
-            --color-secondary: #D1D5DB; /* gray-300 */
-            --color-secondary-light: #4B5563; /* gray-600 */
-            --color-text-dark: #FFFFFF; /* white */
-            --color-text-light: #D1D5DB; /* gray-300 */
-            --color-bg-light: #111827; /* gray-900 */
-            --color-bg-card: #1F2937;
-        }
-
-        /* Aplica as variáveis CSS às classes Tailwind relevantes */
-        .bg-blue-500 { background-color: var(--color-primary) !important; }
-        .hover\:bg-blue-600:hover { background-color: var(--color-primary-dark) !important; }
-        .text-blue-700 { color: var(--color-primary) !important; }
-        .bg-blue-100 { background-color: var(--color-secondary-light) !important; }
-        .hover\:bg-blue-200:hover { background-color: var(--color-secondary-light) !important; }
-        .bg-gray-100 { background-color: var(--color-bg-light) !important; }
-        .text-gray-800 { color: var(--color-text-dark) !important; }
-        .text-white { color: var(--color-text-light) !important; }
-        .bg-white { background-color: var(--color-bg-card) !important; }
-        .text-gray-700 { color: var(--color-secondary) !important; }
-        .hover\:bg-gray-100:hover { background-color: var(--color-secondary-light) !important; }
-        .bg-gray-500 { background-color: var(--color-secondary) !important; }
-        /* Adicione mais regras conforme necessário para outras cores */
-
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-    <!-- Cabeçalho (Top Bar) -->
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+        <!-- Cabeçalho (Top Bar) -->
     <header class="bg-blue-500 text-white p-4 flex justify-between items-center shadow-md">
         <!-- Logo e Menu Toggle -->
         <div class="flex items-center space-x-4">
@@ -70,7 +38,9 @@
             <!-- Logo do Sistema Hospitalar -->
             <div class="flex items-center space-x-2 text-xl font-bold rounded-md px-3 py-1">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z" fill="#FFFFFF"></path>
+
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z"></path>
+
                 </svg>
                 <span>HMS</span>
             </div>
@@ -89,6 +59,7 @@
             </svg>
         </button>
         <!-- Dropdown de usuário (simulado) -->
+
         <div class="absolute right-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 dropdown-menu hidden z-50"> 
             <button id="themeToggle" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 focus:outline-none">
                 <svg class="w-6 h-6 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +68,6 @@
                 Alternar Tema
             </button>
             <button id="logoutButton" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 focus:outline-none">Sair</button>
-        </div>
     </div>
 </div>
     </header>
@@ -178,6 +148,7 @@
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
 
         <!-- Conteúdo Principal -->
+
         <main class="flex-1 p-6 overflow-y-auto">
             <h2 id="mainTitle" class="text-3xl font-bold text-gray-800 mb-6">Principal</h2>
 
@@ -239,5 +210,6 @@
     <script type="module" src="./dashboardStats.js"></script>
     <script type="module" src="./themeSwitcher.js"></script>
     <script type="module" src="./logout.js"></script>
+
 </body>
 </html>

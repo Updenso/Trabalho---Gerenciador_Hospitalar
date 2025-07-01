@@ -12,9 +12,7 @@ CREATE TABLE paciente (
 
 CREATE TABLE profissional (
     profissional_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome_usuario VARCHAR(100) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
     data_nascimento DATE,
     data_admissao DATE,
     telefone VARCHAR(20),

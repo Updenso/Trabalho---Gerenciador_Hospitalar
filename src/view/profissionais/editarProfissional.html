@@ -14,10 +14,9 @@
             padding: 0;
             overflow-x: hidden; /* Evita rolagem horizontal */
         }
-        
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-gray-100 min-h-screen flex flex-col">
      <!-- Cabeçalho (Top Bar) -->
     <header class="bg-blue-500 text-white p-4 flex justify-between items-center shadow-md">
         <!-- Logo e Menu Toggle -->
@@ -31,7 +30,7 @@
             <!-- Logo do Sistema Hospitalar -->
             <div class="flex items-center space-x-2 text-xl font-bold rounded-md px-3 py-1">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z" fill="#FFFFFF"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354c.34-.326.696-.615 1.066-.867.75-.494 1.57-.84 2.44-.95.8-.1 1.6.03 2.37.36.77.33 1.48.83 2.05 1.48.57.65 1.01 1.42 1.29 2.29.28.87.37 1.79.27 2.7.07.9-.17 1.77-.6 2.5l-6 6a1 1 0 01-1.414 0l-6-6c-.43-.73-.67-1.6-.6-2.5-.1-.92-.01-1.84.27-2.7.28-.87.72-1.64 1.29-2.29.57-.65 1.28-1.15 2.05-1.48.77-.33 1.57-.46 2.37-.36.87.11 1.69.45 2.44.95A6.992 6.992 0 0012 4.354z"></path>
                 </svg>
                 <span>HMS</span>
             </div>
@@ -136,15 +135,18 @@
         <div id="sidebarOverlay" class="fixed inset-0 bg-black opacity-50 z-30 hidden md:hidden"></div>
 
         <!-- Conteúdo Principal - Formulário Adicionar Profissional -->
-        <main class="flex-1 p-6 overflow-y-auto">
+        <main class="flex-1 p-6 bg-gray-100 overflow-y-auto">
             <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto relative">
                 <!-- Título e Botão Voltar -->
                 <div class="flex justify-between items-center mb-6">
-                    <h2 id="mainTitle" class="text-2xl font-bold text-gray-800">Editar Profissional</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">Editar Profissional</h2>
                     <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200 ease-in-out">
                         <a href="./visualizarProfissional.html">Visualizar Profissionais</a>
                     </button>
                 </div>
+
+                <!-- Mensagem de Status -->
+                <div id="statusMessage" class="hidden p-3 mb-4 text-sm rounded-md" role="alert"></div>
 
                 <form id="FormEditarProfissional" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <!-- ID do Profissional (Campo somente leitura) -->
@@ -158,21 +160,15 @@
                         <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
                    
-                    <!-- Username -->
-                    <div>
-                        <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Usuário <span class="text-red-500">*</span></label>
-                        <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
+                   
                     <!-- Email -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
                         <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                     </div>
                     <!-- Password -->
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                        <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    </div>
+                    
+                   
                     <!-- Date of Birth -->
                     <div>
                         <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Data de Aniversário</label>
@@ -245,7 +241,7 @@
                 
 
                 <!-- Botão de submissão do formulário -->
-                <div class="mt-6 text-center">
+                <div class="col-span-2 flex justify-center">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-md transition duration-200 ease-in-out shadow-md">
                         Editar Profissional
                     </button>
@@ -259,7 +255,6 @@
     <script  src="../script.js"></script>
     <script type="module" src="./editar.js"></script>
     <script type="module" src="../dropdown.js"></script>
-    <script type="module" src="../themeSwitcher.js"></script>
     <script type="module" src="../logout.js"></script>
 </body>
 </html>

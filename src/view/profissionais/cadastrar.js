@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(formProfissional);
             const data = {
                 nomeCompleto: formData.get('name'),
-                nomeUsuario: formData.get('username'),
                 email: formData.get('email'),
-                senha: formData.get('password'), // Em um ambiente de produção, esta senha deve ser hasheada no backend
                 dataNascimento: formData.get('dob'),
                 dataAdmissao: formData.get('admissionDate'),
                 telefone: formData.get('phone'),

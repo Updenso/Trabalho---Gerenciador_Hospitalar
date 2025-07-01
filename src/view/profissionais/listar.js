@@ -25,17 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
                     
                     cell = row.insertCell();
-                    cell.textContent = professional.nomeUsuario;
-                    cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
-
-                    cell = row.insertCell();
                     cell.textContent = professional.email;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 
-                    cell = row.insertCell();
-                    cell.textContent = professional.senha;
-                    cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
-                    
                     // Formata a data de nascimento
                     cell.textContent = professional.dataNascimento;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
@@ -86,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     actionsCell.appendChild(deleteButton);
                 });
             } else {
-                professionalsTableBody.innerHTML = '<tr><td colspan="12" class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-center">Nenhum profissional encontrado.</td></tr>';
+                professionalsTableBody.innerHTML = '<tr><td colspan="10" class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-center">Nenhum profissional encontrado.</td></tr>';
             }
         } catch (error) {
             console.error('Erro ao buscar profissionais:', error);
-            professionalsTableBody.innerHTML = '<tr><td colspan="12" class="px-6 py-4 whitespace-nowrap text-sm text-red-500 text-center">Erro ao carregar profissionais.</td></tr>';
+            professionalsTableBody.innerHTML = '<tr><td colspan="10" class="px-6 py-4 whitespace-nowrap text-sm text-red-500 text-center">Erro ao carregar profissionais.</td></tr>';
         }
     }
 

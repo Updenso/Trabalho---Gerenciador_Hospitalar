@@ -48,25 +48,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const profissional = result.profissional;
 
                 // Preencher o campo ID
-                document.getElementById('profissionalId').value = profissional.profissional_id;
+                document.getElementById('profissionalId').value = profissional.profissionalId;
                 document.getElementById('name').value = profissional.nomeCompleto;
-                document.getElementById('username').value = profissional.nomeUsuario;
                 document.getElementById('email').value = profissional.email;
-                // document.getElementById('password').value = profissional.senha; // Senha não deve ser pré-preenchida por segurança
                 document.getElementById('dob').value = profissional.dataNascimento;
-                document.getElementById('admissionDate').value = profissional.dataAdmissao;
+                document.getElementById('joiningDate').value = profissional.dataAdmissao;
                 document.getElementById('phone').value = profissional.telefone;
                 // Selecionar o gênero
                 document.querySelectorAll(`input[name="gender"][value="${profissional.genero}"]`).forEach(radio => radio.checked = true);
                 document.getElementById('specialty').value = profissional.especialidade;
 
                 // Preencher campos de endereço (se o endereco for uma string, você precisará parseá-lo)
-                const enderecoParts = profissional.endereco ? profissional.endereco.split(', ') : [];
-                document.getElementById('Rua').value = enderecoParts[0] || '';
-                document.getElementById('Numero').value = enderecoParts[1] || '';
-                document.getElementById('Bairro').value = enderecoParts[2] || '';
-                document.getElementById('Cidade').value = enderecoParts[3] || '';
-                document.getElementById('Estado').value = enderecoParts[4] || '';
+                document.getElementById('address').value = profissional.endereco || '';
 
                 document.getElementById('biography').value = profissional.biografia;
 
@@ -110,11 +103,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const formData = new FormData(formEditarProfissional);
             const data = {
                 nomeCompleto: formData.get('name'),
-                nomeUsuario: formData.get('username'),
                 email: formData.get('email'),
-                senha: formData.get('password'), // Senha não deve ser enviada para edição diretamente por aqui
                 dataNascimento: formData.get('dob'),
-                dataAdmissao: formData.get('admissionDate'),
+                dataAdmissao: formData.get('joiningDate'),
                 telefone: formData.get('phone'),
                 genero: formData.get('gender'),
                 especialidade: formData.get('specialty'),
