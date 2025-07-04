@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - HMS</title>
@@ -20,47 +21,10 @@
             background-color: #f3f4f6; /* Cor de fundo suave */
         }
 
-        /* Variáveis CSS para temas */
-        :root {
-            --color-primary: #3B82F6; /* blue-500 */
-            --color-primary-dark: #2563EB; /* blue-600 */
-            --color-secondary: #6B7280; /* gray-500 */
-            --color-secondary-light: #F3F4F6; /* gray-100 */
-            --color-text-dark: #1F2937; /* gray-800 */
-            --color-text-light: #FFFFFF; /* white */
-            --color-bg-light: #F3F4F6; /* gray-100 */
-            --color-bg-card: #FFFFFF;
-        }
-
-        .dark-theme {
-            --color-primary: #1F2937; /* gray-800 */
-            --color-primary-dark: #374151; /* gray-700 */
-            --color-secondary: #D1D5DB; /* gray-300 */
-            --color-secondary-light: #4B5563; /* gray-600 */
-            --color-text-dark: #FFFFFF; /* white */
-            --color-text-light: #D1D5DB; /* gray-300 */
-            --color-bg-light: #111827; /* gray-900 */
-            --color-bg-card: #1F2937;
-        }
-
-        /* Aplica as variáveis CSS às classes Tailwind relevantes */
-        .bg-blue-500 { background-color: var(--color-primary) !important; }
-        .hover\:bg-blue-600:hover { background-color: var(--color-primary-dark) !important; }
-        .text-blue-700 { color: var(--color-primary) !important; }
-        .bg-blue-100 { background-color: var(--color-secondary-light) !important; }
-        .hover\:bg-blue-200:hover { background-color: var(--color-secondary-light) !important; }
-        .bg-gray-100 { background-color: var(--color-bg-light) !important; }
-        .text-gray-800 { color: var(--color-text-dark) !important; }
-        .text-white { color: var(--color-text-light) !important; }
-        .bg-white { background-color: var(--color-bg-card) !important; }
-        .text-gray-700 { color: var(--color-secondary) !important; }
-        .hover\:bg-gray-100:hover { background-color: var(--color-secondary-light) !important; }
-        .bg-gray-500 { background-color: var(--color-secondary) !important; }
-        /* Adicione mais regras conforme necessário para outras cores */
-
     </style>
 </head>
 <body class="bg-gray-100 light-theme">
+
     <!-- Container principal da tela de login -->
     <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center">
         <!-- Ícone do HMS -->
@@ -73,11 +37,11 @@
         <!-- Formulário de login -->
         <form id="loginForm" class="space-y-4">
             <div>
-                <label for="username" class="block text-left text-sm font-medium text-gray-700 mb-1">Username</label>
+                <label for="username" class="block text-left text-sm font-medium text-gray-700 mb-1">Usuario</label>
                 <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
             <div>
-                <label for="password" class="block text-left text-sm font-medium text-gray-700 mb-1">Password</label>
+                <label for="password" class="block text-left text-sm font-medium text-gray-700 mb-1">Senha</label>
                 <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
             <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition duration-200 ease-in-out shadow-md">

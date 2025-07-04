@@ -32,9 +32,13 @@ class AgendamentoController {
                     if (agendamento) {
                         // Formatar data e hora antes de enviar
                         const formattedAgendamento = {
-                            ...agendamento,
-                            dataAgendamento: AgendamentoController._formatDateToDDMMYYYY(agendamento.data_agendamento),
-                            horaAgendamento: AgendamentoController._formatTime(agendamento.hora_agendamento)
+                            agendamentoId: agendamento.agendamento_id,
+                            pacienteId: agendamento.paciente_id,
+                            profissionalId: agendamento.profissional_id,
+                            dataAgendamento: agendamento.data_agendamento ? new Date(agendamento.data_agendamento).toISOString().split('T')[0] : null,
+                            horaAgendamento: AgendamentoController._formatTime(agendamento.hora_agendamento),
+                            tipoAgendamento: agendamento.tipo_agendamento,
+                            observacoes: agendamento.observacoes
                         };
                         res.status(200).json({
                             message: "Agendamento encontrado!",
