@@ -50,7 +50,6 @@ class Agendamento {
 
         for (const key in dadosAtualizados) {
             let dbColumnName = key.replace(/([A-Z])/g, '_$1').toLowerCase();
-            // exceção para paciente_id, profissional_id, agendamento_id se eles forem passados (não deveriam ser atualizados assim)
             if (dbColumnName === 'agendamento_id' || dbColumnName === 'paciente_id' || dbColumnName === 'profissional_id') continue;
             
             sets.push(`${dbColumnName} = ?`);
@@ -58,7 +57,7 @@ class Agendamento {
         }
 
         if (sets.length === 0) {
-            return callback(null, false); // Nada para atualizar
+            return callback(null, false); 
         }
 
         values.push(id); 

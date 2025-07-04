@@ -5,7 +5,7 @@ class AgendamentoController {
     static _formatDateToDDMMYYYY(dateString) {
         if (!dateString) return null;
         const date = new Date(dateString);
-        // Adiciona 1 dia para corrigir o fuso horário se necessário (apenas para exibição)
+      
         date.setDate(date.getDate() + 1);
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês é 0-indexed
@@ -15,10 +15,8 @@ class AgendamentoController {
 
     static _formatTime(timeString) {
         if (!timeString) return null;
-        // Supondo que timeString já esteja em um formato legível (HH:MM:SS ou HH:MM)
-        // Se for um objeto Date, pode ser necessário formatar: new Date(`2000-01-01T${timeString}`).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        // Por simplicidade, assumindo que vem como string HH:MM ou HH:MM:SS
-        return timeString.substring(0, 5); // Retorna HH:MM
+    
+        return timeString.substring(0, 5); 
     }
 
     static async visualizarAgendamentos(req, res) {

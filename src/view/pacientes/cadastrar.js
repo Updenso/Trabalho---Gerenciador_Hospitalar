@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     cidade: formData.get('cidade'),
                     estado: formData.get('estado')
                 },
-                historicoMedico: formData.get('medicalHistory')
+                historicoMedico: formData.get('medicalHistory'),
+                status: formData.get('status')
             };
 
             try {
