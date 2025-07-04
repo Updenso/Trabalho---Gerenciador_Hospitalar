@@ -72,6 +72,7 @@
                     messageArea.textContent = 'Login bem-sucedido! Redirecionando...';
                     messageArea.classList.remove('hidden', 'text-red-500');
                     messageArea.classList.add('text-green-500', 'block');
+                    sessionStorage.setItem('usuarioLogado', 'true');
                     // Simula um redirecionamento após 1 segundo
                     setTimeout(() => {
                         window.location.href = './dashboard.html'; // Redirecione para a página do dashboard

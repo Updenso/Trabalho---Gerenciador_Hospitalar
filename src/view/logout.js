@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutButton) {
         logoutButton.addEventListener('click', (event) => {
             event.preventDefault(); // Impede o comportamento padrão do link/botão
+            event.stopPropagation(); // Impede que o evento se propague para o documento
 
             // Limpar dados de sessão (ex: token de autenticação, informações de usuário)
             localStorage.removeItem('theme'); // Remover o tema salvo, se aplicável
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adicione outras limpezas de localStorage ou sessionStorage aqui, se houver
 
             // Redirecionar para a página de login
-            window.location.href = 'login.html';
+            window.location.href = '/login.html';
         });
     }
 }); 
