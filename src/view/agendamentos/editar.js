@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('horaAgendamento').value = agendamento.horaAgendamento;
                 document.getElementById('tipoAgendamento').value = agendamento.tipoAgendamento;
                 document.getElementById('observacoes').value = agendamento.observacoes;
+                document.getElementById('status').value = agendamento.status;
 
             } else {
                 statusMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
@@ -101,7 +102,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 dataAgendamento: formData.get('dataAgendamento'),
                 horaAgendamento: formData.get('horaAgendamento'),
                 tipoAgendamento: formData.get('tipoAgendamento'),
-                observacoes: formData.get('observacoes')
+                observacoes: formData.get('observacoes'),
+                status: formData.get('status')
             };
 
             try {

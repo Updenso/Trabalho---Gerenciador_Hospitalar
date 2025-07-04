@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.textContent = appointment.observacoes;
                     cell.classList.add('px-6', 'py-4', 'text-sm', 'text-gray-700', 'max-w-xs', 'overflow-hidden', 'text-ellipsis', 'border-r', 'border-gray-200');
 
+                    cell = row.insertCell();
+                    cell.textContent = appointment.status;
+                    cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
+
                     const actionsCell = row.insertCell();
                     actionsCell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'font-medium', 'border-r', 'border-gray-200');
 
@@ -66,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     actionsCell.appendChild(deleteButton);
                 });
             } else {
-                appointmentsTableBody.innerHTML = '<tr><td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-center">Nenhum agendamento encontrado.</td></tr>';
+                appointmentsTableBody.innerHTML = '<tr><td colspan="9" class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 text-center">Nenhum agendamento encontrado.</td></tr>';
             }
         } catch (error) {
             console.error('Erro ao buscar agendamentos:', error);
-            appointmentsTableBody.innerHTML = '<tr><td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-red-500 text-center">Erro ao carregar agendamentos.</td></tr>';
+            appointmentsTableBody.innerHTML = '<tr><td colspan="9" class="px-6 py-4 whitespace-nowrap text-sm text-red-500 text-center">Erro ao carregar agendamentos.</td></tr>';
         }
     }
 

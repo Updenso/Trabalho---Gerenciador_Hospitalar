@@ -32,6 +32,7 @@ CREATE TABLE agendamento (
     hora_agendamento TIME NOT NULL,
     tipo_agendamento ENUM('Consulta', 'Exame', 'Cirurgia', 'Retorno', 'Outro') NOT NULL,
     observacoes TEXT,
+    status VARCHAR(50) DEFAULT 'Pendente' NOT NULL,
     FOREIGN KEY (paciente_id) REFERENCES paciente(paciente_id),
     FOREIGN KEY (profissional_id) REFERENCES profissional(profissional_id)
 ); 

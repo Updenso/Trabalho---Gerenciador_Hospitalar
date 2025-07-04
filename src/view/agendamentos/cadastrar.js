@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 dataAgendamento: formData.get('dataAgendamento'),
                 horaAgendamento: formData.get('horaAgendamento'),
                 tipoAgendamento: formData.get('tipoAgendamento'),
-                observacoes: formData.get('observacoes')
+                observacoes: formData.get('observacoes'),
+                status: formData.get('status')
             };
 
             try {

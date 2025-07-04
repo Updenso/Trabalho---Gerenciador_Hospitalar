@@ -38,7 +38,8 @@ class AgendamentoController {
                             dataAgendamento: agendamento.data_agendamento ? new Date(agendamento.data_agendamento).toISOString().split('T')[0] : null,
                             horaAgendamento: AgendamentoController._formatTime(agendamento.hora_agendamento),
                             tipoAgendamento: agendamento.tipo_agendamento,
-                            observacoes: agendamento.observacoes
+                            observacoes: agendamento.observacoes,
+                            status: agendamento.status
                         };
                         res.status(200).json({
                             message: "Agendamento encontrado!",
@@ -60,7 +61,8 @@ class AgendamentoController {
                         dataAgendamento: AgendamentoController._formatDateToDDMMYYYY(agendamento.data_agendamento),
                         horaAgendamento: AgendamentoController._formatTime(agendamento.hora_agendamento),
                         tipoAgendamento: agendamento.tipo_agendamento,
-                        observacoes: agendamento.observacoes
+                        observacoes: agendamento.observacoes,
+                        status: agendamento.status
                     }));
                     res.status(200).json({
                         message: "Lista de agendamentos.",
@@ -76,14 +78,14 @@ class AgendamentoController {
     static async adicionarAgendamento(req, res) {
         try {
             const novoAgendamentoDados = req.body;
-            // Assumir que dataAgendamento e horaAgendamento já vêm formatados ou são strings válidas do frontend
             const novoAgendamento = new Agendamento(
                 novoAgendamentoDados.pacienteId,
                 novoAgendamentoDados.profissionalId,
                 novoAgendamentoDados.dataAgendamento,
                 novoAgendamentoDados.horaAgendamento,
                 novoAgendamentoDados.tipoAgendamento,
-                novoAgendamentoDados.observacoes
+                novoAgendamentoDados.observacoes,
+                novoAgendamentoDados.status || 'Pendente'
             );
 
             Agendamento.adicionar(novoAgendamento, (error, agendamentoAdicionado) => {
@@ -124,15 +126,31 @@ class AgendamentoController {
         try {
             const id = req.params.id;
 
-            Agendamento.deletar(id, (error, sucesso) => {
+            // Primeiro, verifique o status do agendamento
+            Agendamento.visualizarPorId(id, (error, agendamento) => {
                 if (error) {
-                    return res.status(500).json({ message: `${error.message} - falha na exclusão do agendamento` });
+                    return res.status(500).json({ message: `${error.message} - falha ao buscar agendamento para exclusão` });
                 }
-                if (sucesso) {
-                    res.status(200).json({ message: `Agendamento com ID ${id} deletado com sucesso!` });
-                } else {
-                    res.status(404).json({ message: "Agendamento não encontrado para exclusão." });
+                if (!agendamento) {
+                    return res.status(404).json({ message: "Agendamento não encontrado para exclusão." });
                 }
+
+                // Verifique se o status permite a exclusão
+                if (agendamento.status === 'Em Progresso') {
+                    return res.status(400).json({ message: "Não é possível deletar um agendamento em progresso." });
+                }
+
+                // Se o status permitir, prossiga com a exclusão
+                Agendamento.deletar(id, (error, sucesso) => {
+                    if (error) {
+                        return res.status(500).json({ message: `${error.message} - falha na exclusão do agendamento` });
+                    }
+                    if (sucesso) {
+                        res.status(200).json({ message: `Agendamento com ID ${id} deletado com sucesso!` });
+                    } else {
+                        res.status(404).json({ message: "Agendamento não encontrado para exclusão." });
+                    }
+                });
             });
         } catch (erro) {
             res.status(500).json({ message: `${erro.message} - falha na exclusão do agendamento` });

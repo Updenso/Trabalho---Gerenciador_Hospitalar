@@ -1,18 +1,19 @@
 import connection from "../config/DBconfig.js";
 
 class Agendamento {
-    constructor(pacienteId, profissionalId, dataAgendamento, horaAgendamento, tipoAgendamento, observacoes) {
+    constructor(pacienteId, profissionalId, dataAgendamento, horaAgendamento, tipoAgendamento, observacoes, status = 'Pendente') {
         this.pacienteId = pacienteId;
         this.profissionalId = profissionalId;
         this.dataAgendamento = dataAgendamento;
         this.horaAgendamento = horaAgendamento;
         this.tipoAgendamento = tipoAgendamento;
         this.observacoes = observacoes;
+        this.status = status;
     }
 
     static adicionar(agendamento, callback) {
-        const sql = 'INSERT INTO agendamento (paciente_id, profissional_id, data_agendamento, hora_agendamento, tipo_agendamento, observacoes) VALUES (?, ?, ?, ?, ?, ?)';
-        connection.query(sql, [agendamento.pacienteId, agendamento.profissionalId, agendamento.dataAgendamento, agendamento.horaAgendamento, agendamento.tipoAgendamento, agendamento.observacoes], (error, results) => {
+        const sql = 'INSERT INTO agendamento (paciente_id, profissional_id, data_agendamento, hora_agendamento, tipo_agendamento, observacoes, status) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        connection.query(sql, [agendamento.pacienteId, agendamento.profissionalId, agendamento.dataAgendamento, agendamento.horaAgendamento, agendamento.tipoAgendamento, agendamento.observacoes, agendamento.status], (error, results) => {
             if (error) {
                 console.error("Erro ao adicionar agendamento:", error);
                 return callback(error, null);
