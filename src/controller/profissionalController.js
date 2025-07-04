@@ -44,6 +44,7 @@ class ProfissionalController {
             const novoProfissional = new Profissional(
                 novoProfissionalDados.nomeCompleto,
                 novoProfissionalDados.email,
+                novoProfissionalDados.crm,
                 novoProfissionalDados.dataNascimento,
                 novoProfissionalDados.dataAdmissao,
                 novoProfissionalDados.telefone,

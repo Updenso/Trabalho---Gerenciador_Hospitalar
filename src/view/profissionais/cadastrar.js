@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = {
                 nomeCompleto: formData.get('name'),
                 email: formData.get('email'),
+                crm: formData.get('crm'),
                 dataNascimento: formData.get('dob'),
                 dataAdmissao: formData.get('joiningDate'),
                 telefone: formData.get('phone'),

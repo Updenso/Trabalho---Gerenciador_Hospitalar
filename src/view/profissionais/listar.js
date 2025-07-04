@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 
                     cell = row.insertCell();
+                    cell.textContent = professional.crm;
+                    cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
+
+                    cell = row.insertCell();
                     cell.textContent = professional.dataNascimento;
                     cell.classList.add('px-6', 'py-4', 'whitespace-nowrap', 'text-sm', 'text-gray-700', 'border-r', 'border-gray-200');
 

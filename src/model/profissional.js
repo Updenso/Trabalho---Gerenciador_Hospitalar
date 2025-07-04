@@ -1,9 +1,10 @@
 import connection from "../config/DBconfig.js";
 
 class Profissional {
-    constructor(nomeCompleto, email, dataNascimento, dataAdmissao, telefone, genero, especialidade, endereco, biografia) {
+    constructor(nomeCompleto, email, crm, dataNascimento, dataAdmissao, telefone, genero, especialidade, endereco, biografia) {
         this.nomeCompleto = nomeCompleto;
         this.email = email;
+        this.crm = crm;
         this.dataNascimento = dataNascimento;
         this.dataAdmissao = dataAdmissao;
         this.telefone = telefone;
@@ -51,10 +52,11 @@ class Profissional {
             enderecoString = `${profissional.endereco.rua}, ${profissional.endereco.numero}, ${profissional.endereco.bairro}, ${profissional.endereco.cidade}, ${profissional.endereco.estado}`;
         }
 
-        const sql = 'INSERT INTO profissional (nome_completo, email, data_nascimento, data_admissao, telefone, genero, especialidade, endereco, biografia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO profissional (nome_completo, email, crm, data_nascimento, data_admissao, telefone, genero, especialidade, endereco, biografia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         connection.query(sql, [
             profissional.nomeCompleto,
             profissional.email,
+            profissional.crm,
             profissional.dataNascimento,
             profissional.dataAdmissao,
             profissional.telefone,
@@ -83,6 +85,7 @@ class Profissional {
                 profissionalId: prof.profissional_id,
                 nomeCompleto: prof.nome_completo,
                 email: prof.email,
+                crm: prof.crm,
                 dataNascimento: Profissional._formatDateToYYYYMMDD(prof.data_nascimento),
                 dataAdmissao: Profissional._formatDateToYYYYMMDD(prof.data_admissao),
                 telefone: prof.telefone,
@@ -108,6 +111,7 @@ class Profissional {
                     profissionalId: prof.profissional_id,
                     nomeCompleto: prof.nome_completo,
                     email: prof.email,
+                    crm: prof.crm,
                     dataNascimento: Profissional._formatDateToYYYYMMDD(prof.data_nascimento),
                     dataAdmissao: Profissional._formatDateToYYYYMMDD(prof.data_admissao),
                     telefone: prof.telefone,
@@ -135,6 +139,7 @@ class Profissional {
             if (key === 'nomeCompleto') dbColumnName = 'nome_completo';
             else if (key === 'dataNascimento') dbColumnName = 'data_nascimento';
             else if (key === 'dataAdmissao') dbColumnName = 'data_admissao';
+            else if (key === 'crm') dbColumnName = 'crm';
             else if (key === 'profissionalId') continue; // Ignorar ID
             else if (key === 'endereco' && typeof dadosAtualizados[key] === 'object' && dadosAtualizados[key] !== null) {
                 // Se o endereço for um objeto, convertê-lo para uma string para armazenamento

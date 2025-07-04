@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('profissionalId').value = profissional.profissionalId;
                 document.getElementById('name').value = profissional.nomeCompleto;
                 document.getElementById('email').value = profissional.email;
+                document.getElementById('crm').value = profissional.crm;
                 document.getElementById('dob').value = profissional.dataNascimento;
                 document.getElementById('joiningDate').value = profissional.dataAdmissao;
                 document.getElementById('phone').value = profissional.telefone;
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = {
                 nomeCompleto: formData.get('name'),
                 email: formData.get('email'),
+                crm: formData.get('crm'),
                 dataNascimento: formData.get('dob'),
                 dataAdmissao: formData.get('joiningDate'),
                 telefone: formData.get('phone'),

@@ -14,6 +14,7 @@ CREATE TABLE profissional (
     profissional_id INT PRIMARY KEY AUTO_INCREMENT,
     nome_completo VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    crm VARCHAR(20) UNIQUE NOT NULL,
     data_nascimento DATE,
     data_admissao DATE,
     telefone VARCHAR(20),
